@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nonogram Puzzle</title>
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <link rel="stylesheet" href="nonogramlvl1.css">
+    <script defer src="nonogramlvl1.js"></script>
+
+</head>
+<body>
+    <h1 id="headline">nonogram puzzle</h1>
+
+    
+
+    <article>
+    <button id="reveal" class="instr-label" style="font-size:16px;background-color:white" onclick="toggleInstructions()">How To Play</a>
+    </article>
+    
+    <br>
+    
+    <a  href="level1.html"><button id="reveal" class="instr-label" style="font-size:16px;background-color:white" >Level 1</button></a>
+    <br>
+    <a  href="level2.html"><button id="reveal" class="instr-label" style="font-size:16px;background-color:white" >Level 2</button></a>
+    <br>
+    <a  href="level3.html"><button id="reveal" class="instr-label" style="font-size:16px;background-color:white" >Level 3</button></a>
+        
+
+    <div id="instructions">
+        <p id="instructions-text">
+        click to fill in cells. option + click to mark squares pink.
+        <br> 
+        <br> 
+        numbers above correspond to columns, left to rows. 
+        numerical value indicates contiguously shaded cells. 
+        for example, '10' indicates a group of 10 shaded cells. 
+        two or more values indicates groups of shaded cells. 
+        for example, '3 3' indicates two groups of 3 shaded. 
+        <br> 
+        <br> 
+        the amount of contiguous empty cells is not given. 
+        therefore, consider all configurations for that value. 
+        for example, '4 4' has three potential configurations. 
+        one:[xxxx--xxxx], two:[-xxxx-xxxx], three:[xxxx-xxxx-].
+        logically, shaded cells overlap at points of certainty. 
+        we deduce that the cells [-xxx--xxx-] must be shaded.
+        <br> 
+        <br> 
+        to solve, continue deducing until all values satisfied.
+        </p>
+    </div>
+
+    <footer>
+        <p>2024 Games Portal, Maynooth Team 6 Project</p>
+    </footer>
+</body>
+</html>

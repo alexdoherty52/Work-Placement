@@ -1,0 +1,14 @@
+.content {
+    padding: 20px;
+    margin: auto;
+    max-width: 800px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+.content h2 {
+    color: #333;
+    padding-top: 20px;
+}

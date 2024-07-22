@@ -1,0 +1,149 @@
+
+body {
+    font-family: 'Didact Gothic', sans-serif;
+    height: 100vh;
+    width: 100%;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+h1 {
+    font-size: 45px;
+    text-align: center;
+}
+
+article {
+    font-family: 'Tangerine', cursive;
+    padding: 0 0 10px 0;
+    text-align: center;
+    width: 320px;
+    font-size: 18px;
+}
+
+button {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+#puzzleboard {
+    display: grid;
+    grid-template-columns: 65px repeat(17, 30px);
+    grid-template-rows: 30px repeat(15, 30px); 
+}
+
+div {
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.topkey {
+    grid-template-columns: 65px repeat(17, 30px);
+    display: grid;
+    text-align: center;
+}
+
+.topkey div {
+    display: flex;
+    align-items: flex-end;
+}
+
+.leftkey {
+    text-align: right;
+    padding: 2px 5px 0px 0px;
+}
+
+.instr-label {
+    color: black;
+}
+
+#puzzle-full {
+    display: block;
+}
+
+#instructions {
+    display: none;
+    padding: 0 2px;
+}
+
+#instructions-text {
+    width: 361px;
+    height: 333px;
+    text-align: center;
+    text-justify: inter-word;
+    padding: -40px 2px 0 2px;
+}
+
+
+/* BOLD GRID LINES */
+    /* Center Vertical */
+    #c6r1, #c6r2, #c6r3, #c6r4, #c6r5, #c6r6, #c6r7, #c6r8, #c6r9, #c6r10, #c6r11, #c6r12{
+        border-right: 2px solid black;
+    }
+    #c7r1, #c7r2, #c7r3, #c7r4, #c7r5, #c7r6, #c7r7, #c7r8, #c7r9, #c7r10, #c7r11, #c7r12 {
+        border-left: 2px solid black;
+    }
+
+
+    /* Center Horizontal */
+    #c1r6, #c2r6, #c3r6, #c4r6, #c6r6, #c5r6, #c7r6, #c8r6, #c9r6, #c10r6, #c11r6, #c12r6 {
+        border-bottom: 2px solid black;
+    }
+    
+    
+    #c1r7, #c2r7, #c3r7, #c4r7, #c5r7, #c6r7, #c7r7, #c8r7, #c9r7, #c10r7, #c11r7, #c12r7{
+        border-top: 2px solid black;
+    }
+
+    /* Top */
+    #c1r1, #c2r1, #c3r1, #c4r1, #c5r1, #c6r1, #c7r1, #c8r1, #c9r1, #c10r1, #c11r1, #c12r1 {
+        border-top: 4px solid black;
+    }
+
+    /* Bottom */
+    #c1r12, #c2r12, #c3r12, #c4r12, #c5r12, #c6r12, #c7r12, #c8r12, #c9r12, #c10r12, #c11r12, #c12r12{
+        border-bottom: 4px solid black;
+    }
+
+    /* Left */
+    #c1r1, #c1r2, #c1r3, #c1r4, #c1r5, #c1r6, #c1r7, #c1r8, #c1r9, #c1r10, #c1r11, #c1r12{
+        border-left: 4px solid black;
+    }
+
+    /* Right */
+    #c12r1, #c12r2, #c12r3, #c12r4, #c12r5, #c12r6, #c12r7, #c12r8, #c12r9, #c12r10, #c12r11, #c12r12{
+        border-right: 4px solid black;
+    }
+
+    /* White Corner Top Left */
+    #c0r0 {
+        border-left: white;
+        border-top: white;
+    }
+
+
+
+    footer p {
+        margin: 0;
+        font-size: 16px;
+        letter-spacing: 1.5px;
+        font-weight: 500;
+    }
+    footer {
+        background: #000000;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    
+        font-family: Montserrat, sans-serif;
+        width: 100%;
+        background-color: #000000;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        overflow: hidden;
+    }

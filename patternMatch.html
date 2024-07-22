@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Match Game</title>
+    <link rel="stylesheet" href="patternMatch.css">
+</head>
+<body>
+    <a href="index.html" class="previous">&laquo;</a>
+
+    <div class="wrapper">
+        <header>
+            <h1>Pattern Match Game</h1>
+        </header>
+        <main>
+            <div id="patternContainer" class="pattern-container"></div>
+            <input type="text" id="userInput" placeholder="Your guess..." />
+            <div class="button-container">
+                <button onclick="submitGuess()" id = "submit">Submit Guess</button>
+                <button onclick="loadPattern()">New Game</button>
+            </div>
+            <p id="feedback"></p>
+        </main>
+        <footer>
+            <p>2024 Games Portal, Maynooth Team 6 Project</p>
+        </footer>
+    </div>
+    <script src="patternMatch.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stamp Name Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <a href="index.html" class="previous">&laquo;</a>
+
+    
+    <div id="container">
+        <h1>Stamp Name Game</h1>
+        <div id="game-area">
+            <div id="stampSequence"></div>
+            <div id="options"></div>
+            <div id="message"></div>
+            <div id="legend">
+                <h2>Legend:</h2>
+                <ul>
+                    <li><strong>B:</strong> Produces a flower stamp</li>
+                    <li><strong>A:</strong> Produces a sun stamp</li>
+                    <li><strong>R:</strong> Combination of stamps: sun, flower, sun</li>
+                    <li><strong>E:</strong> Combination of stamps: sun, flower, flower, flower</li>
+                    <li><strong>Y:</strong> Combination of stamps: sun, flower, flower, sun</li>
+                </ul>
+            </div>
+            <button onclick="newGame()">New Game</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

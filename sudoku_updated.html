@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="sudoku_styles.css">
+</head>
+<body>
+
+    <a href="index.html" class="previous">&laquo;</a>
+
+    <div class="wrapper">
+        <header>
+            <h1>Sudoku Game</h1>
+        </header>
+        <main>
+            <div id="sudokuContainer">
+                <canvas id="sudokuCanvas" width="450" height="450"></canvas>
+            </div>
+            <div class="controls">
+                <button onclick="checkSolution()">Check Solution</button>
+                <button onclick="newPuzzle()">New Puzzle</button>
+            </div>
+        </main>
+        <footer>
+            <p>© 2024 Sudoku Portal, Inc.</p>
+        </footer>
+    </div>
+    <script src="sudoku_updated.js"></script>
+</body>
+</html>
