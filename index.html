@@ -15,21 +15,40 @@
     <link rel="stylesheet" type="text/css" href="auth.css">
     <link rel="stylesheet" href="styles.css">
 
+    <style>
+        #qr-code {
+            margin-top: 100px; /* Move the QR code down by 100 pixels */
+            text-align: center;
+        }
+        #qr-code img {
+            width: 100px;
+            height: 100px;
+        }
+        #qr-code p {
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a class="navbar-logo" href="index.html">GamesPortal</a>
-                <li id="welcome-message"></li>
-                <ul class="navbar-menu">
-                    <li class="navbar-item"><a href="index.html">Home</a></li>
-                    <li class="navbar-item"><a href="about.html">About</a></li>
-                    <li class="navbar-item"><a href="authentication.html">Sign In</a></li>
-                </ul>
-            </div>
-        </nav>
+    <!-- QR Code -->
+    <div id="qr-code">
+        <img src="qr-code.png" alt="QR Code">
+        <p>Scan on iPad or iPhone to open</p>
+    </div>
 
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-logo" href="index.html">GamesPortal</a>
+            <li id="welcome-message"></li>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html">Home</a></li>
+                <li class="navbar-item"><a href="about.html">About</a></li>
+                <li class="navbar-item"><a href="authentication.html">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main>
         <div class="game-links">
@@ -77,19 +96,20 @@
                 <img src="multiplication.jpg" alt="Multiplication Game">
                 <span>Multiplication Game</span>
             </a>
+            <a href="simongame.html" class="game-link">
+                <img src="simon.jpg" alt="Simon Game">
+                <span>Simon Game</span>
+            </a>
         </div>
     </main>
     
-</body>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>     
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-    <script src="auth.js"></script>
-
     <footer>
         <p>2024 Games Portal, Maynooth Team 6 Project</p>
     </footer>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>     
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="auth.js"></script>
+</body>
 </html>
-
-
