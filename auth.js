@@ -1,5 +1,4 @@
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCNNEjo_H7oqvSuGCfm1io-1RZe0U0tQwM",
   authDomain: "sample-auth-2c059.firebaseapp.com",
@@ -11,148 +10,137 @@ const firebaseConfig = {
   measurementId: "G-6M2VY6P1B1"
 };
 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // Initialize variables
+    const auth = firebase.auth();
+    const database = firebase.database();
+// Set up our register function
+function register() {
+  // Get all our input fields
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const full_name = document.getElementById('full_name').value;
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // Initialize variables
-  const auth = firebase.auth()
-  const database = firebase.database()
-  
-  // Set up our register function
-  function register () {
-    // Get all our input fields
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-    full_name = document.getElementById('full_name').value
-   
-    // Validate input fields
-    if (validate_email(email) == false || validate_password(password) == false) {
-      alert('Error!')
-      return
-      // Don't continue running the code
-    }
-    
-   
-    // Move on with Auth
-    auth.createUserWithEmailAndPassword(email, password)
+  // Validate input fields
+  if (!validate_email(email) || !validate_password(password)) {
+    alert('Error!');
+    return;
+  }
+
+  // Move on with Auth
+  auth.createUserWithEmailAndPassword(email, password)
     .then(function() {
       // Declare user variable
-      var user = auth.currentUser
-  
+      const user = auth.currentUser;
+
       // Add this user to Firebase Database
-      var database_ref = database.ref()
-  
+      const database_ref = database.ref();
+
       // Create User data
-      var user_data = {
-        email : email,
-        full_name : full_name,
-        last_login : Date.now()
-      }
-  
+      const user_data = {
+        email: email,
+        full_name: full_name,
+        last_login: Date.now()
+      };
+
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).set(user_data)
-  
-      // DOne
-      alert('User Created!')
+      database_ref.child('users/' + user.uid).set(user_data);
+
+      // Store user name in local storage
+      localStorage.setItem('userFullName', full_name);
+
+      // Done
+      alert('User Created!');
     })
     .catch(function(error) {
       // Firebase will use this to alert of its errors
-      var error_code = error.code
-      var error_message = error.message
-  
-      alert(error_message)
-    })
+      const error_message = error.message;
+      alert(error_message);
+    });
+}
+
+// Set up our login function
+function login() {
+  // Get all our input fields
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  // Validate input fields
+  if (!validate_email(email) || !validate_password(password)) {
+    alert('Wrong Email or Password');
+    return;
   }
-  
-  // Set up our login function
-  function login () {
-    // Get all our input fields
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-  
-    // Validate input fields
-    if (validate_email(email) == false || validate_password(password) == false) {
-      alert('Wrong Email or Password')
-      return
-      // Don't continue running the code
-    }
-  
-    auth.signInWithEmailAndPassword(email, password)
+
+  auth.signInWithEmailAndPassword(email, password)
     .then(function() {
-        var user = auth.currentUser;
+      const user = auth.currentUser;
 
-        // Update last login time in database
-        var database_ref = database.ref();
-        var user_data = {
-            last_login: Date.now()
-        };
-        database_ref.child('users/' + user.uid).update(user_data);
+      // Update last login time in database
+      const database_ref = database.ref();
+      const user_data = {
+        last_login: Date.now()
+      };
+      database_ref.child('users/' + user.uid).update(user_data);
 
-        // Retrieve user data including full_name
-        database_ref.child('users/' + user.uid).once('value')
-            .then(function(snapshot) {
-                var userData = snapshot.val();
-                if (userData && userData.full_name) {
-                  var welcomeMessage = document.getElementById('welcome-message');
-                    if (welcomeMessage) {
-                        welcomeMessage.innerHTML = 'Welcome, <strong>' + userData.full_name + '</strong>';
-                    } else {
-                        alert('Element with id "welcome-message" not found.');
-                    }
-
-                } else {
-                  alert('Full name not found in user data.');
-                }
-            })
-            .catch(function(error) {
-              alert('Error retrieving user data:', error);
-            });
+      // Store user name in local storage
+      database_ref.child('users/' + user.uid).once('value').then((snapshot) => {
+        const user_data = snapshot.val();
+        localStorage.setItem('userFullName', user_data.full_name);
 
         // Redirect to home page (index.html)
-        window.location.href = "index.html"; 
+        window.location.href = "index.html";
+      });
     })
     .catch(function(error) {
-        var error_code = error.code;
-        var error_message = error.message;
-        alert(error_message);
+      const error_message = error.message;
+      alert(error_message);
     });
+}
 
+    // Validate Functions
+    function validate_email(email) {
+      const expression = /^[^@]+@\w+(\.\w+)+\w$/;
+      return expression.test(email);
+    }
 
+    function validate_password(password) {
+      return password.length >= 6;
+    }
 
-  }
-  
-  
-  
-  
-  // Validate Functions
-  function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
-    if (expression.test(email) == true) {
-      // Email is good
-      return true
-    } else {
-      // Email is not good
-      return false
+    function validate_field(field) {
+      return field != null && field.length > 0;
     }
-  }
-  
-  function validate_password(password) {
-    // Firebase only accepts lengths greater than 6
-    if (password < 6) {
-      return false
-    } else {
-      return true
+
+    // Function to show welcome message
+    function showWelcomeMessage(name) {
+      const navbar = document.getElementById('navbar');
+      const welcomeMessage = document.createElement('div');
+      welcomeMessage.id = 'welcomeMessage';
+      welcomeMessage.textContent = `Welcome, ${name}`;
+      navbar.appendChild(welcomeMessage);
     }
-  }
-  
-  function validate_field(field) {
-    if (field == null) {
-      return false
+
+    // Function to hide welcome message
+    function hideWelcomeMessage() {
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      if (welcomeMessage) {
+        welcomeMessage.remove();
+      }
     }
-  
-    if (field.length <= 0) {
-      return false
-    } else {
-      return true
-    }
-  }
+
+    // Check authentication state and update navbar
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, display welcome message
+        const database_ref = database.ref('users/' + user.uid);
+        database_ref.once('value').then((snapshot) => {
+          const user_data = snapshot.val();
+          const displayName = user_data.full_name;
+          showWelcomeMessage(displayName);
+        });
+      } else {
+        // User is signed out, hide welcome message
+        hideWelcomeMessage();
+      }
+    });

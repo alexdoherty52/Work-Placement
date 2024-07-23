@@ -15,6 +15,7 @@ html, body {
     box-sizing: border-box;
     border: none;
     outline: none;
+    font-family: Orbitron, sans-serif;
 }
 #content_container {
     width: 30%;
@@ -54,7 +55,7 @@ html, body {
 #form_header {
     display: inline-block;
     font-size: 20px;
-    font-family: Bowlby One SC;
+    font-family: Orbitron, sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -91,7 +92,7 @@ input {
     margin-bottom: 20px;
 
     background: #000;
-    font-family: Montserrat;
+    font-family: Orbitron, sans-serif;
     font-weight: 500;
     color: #fff;
     font-size: 12px;
@@ -122,7 +123,7 @@ input {
     background: transparent;
     color: inherit;
 
-    font-family: Montserrat;
+    font-family: Orbitron, sans-serif;
     letter-spacing: 1px;
     font-weight: 900;
     font-size: 12px;
@@ -150,33 +151,53 @@ input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 20px;
+    padding: 10px 20px;
 }
+
+.navbar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-menu.navbar-menu-right {
+    margin-left: auto; /* Pushes navbar-menu to the right */
+}
+
+.navbar-item.welcome-message {
+    flex: 1; /* Takes up remaining space */
+    text-align: center; /* Center align content */
+}
+
+
 
 .navbar-logo {
     color: white;
     text-decoration: none;
-    font-family: Montserrat, sans-serif;
+    font-family: Orbitron, sans-serif;
     letter-spacing: 1px;
     font-weight: 900;
     font-size: 32px;
-}
-
-.navbar-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
 }
 
 .navbar-item {
     margin-left: 20px;
 }
 
+.navbar-item.welcome-message {
+    flex: 1; /* Takes up remaining space */
+    text-align: center; /* Center align content */
+    font-weight: 700;
+    color: red;
+
+}
+
 .navbar-item a {
     color: white;
     text-decoration: none;
-    font-family: Montserrat, sans-serif;
+    font-family: Orbitron, sans-serif;
     font-weight: 500;
     transition: color 0.3s;
     letter-spacing: 1px;

@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games Portal</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron&family=Literata">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
     <!-- stylesheets -->
     <link rel="stylesheet" type="text/css" href="auth.css">
     <link rel="stylesheet" href="styles.css">
-
     <style>
         #qr-code {
             margin-top: 100px; /* Move the QR code down by 100 pixels */
@@ -29,26 +25,35 @@
             text-align: center;
         }
     </style>
+
 </head>
 <body>
-    <!-- QR Code -->
-    <div id="qr-code">
+
+      <!-- QR Code -->
+      <div id="qr-code">
         <img src="qr-code.png" alt="QR Code">
         <p>Scan on iPad or iPhone to open</p>
     </div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <a class="navbar-logo" href="index.html">GamesPortal</a>
-            <li id="welcome-message"></li>
-            <ul class="navbar-menu">
+            
+            <ul class="navbar-menu navbar-menu-right">
                 <li class="navbar-item"><a href="index.html">Home</a></li>
                 <li class="navbar-item"><a href="about.html">About</a></li>
+            </ul>
+            
+            <div class="navbar-item welcome-message" id="welcome-message"></div> <!-- welcome message div -->
+
+            <ul class="navbar-menu">
                 <li class="navbar-item"><a href="authentication.html">Sign In</a></li>
+                <li class="navbar-item"><a href="index.html" onclick="signOut()">Sign Out</a></li> <!-- Sign out link -->
             </ul>
         </div>
     </nav>
+        
+
 
     <main>
         <div class="game-links">
@@ -60,10 +65,7 @@
                 <img src="sudoku.jpg" alt="Sudoku Game">
                 <span>Sudoku Game</span>
             </a>
-            <a href="StampNameGame.html" class="game-link">
-                <img src="stampback.jpg" alt="Stamp Name Game">
-                <span>Stamp Name Game</span>
-            </a>
+            
             <a href="patternMatch.html" class="game-link">
                 <img src="patternmatchbackground.jpg" alt="Pattern Match Game">
                 <span>Pattern Match Game</span>
@@ -97,7 +99,7 @@
                 <span>Multiplication Game</span>
             </a>
             <a href="simongame.html" class="game-link">
-                <img src="simon.jpg" alt="Simon Game">
+                <img src="simongame.jpg" alt="Simon Game">
                 <span>Simon Game</span>
             </a>
         </div>
@@ -106,10 +108,39 @@
     <footer>
         <p>2024 Games Portal, Maynooth Team 6 Project</p>
     </footer>
-    
+
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>     
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src="auth.js"></script>
+
+    <script>
+        // Function to show welcome message
+        function showWelcomeMessage(name) {
+        const welcomeMessage = document.getElementById('welcome-message');
+        welcomeMessage.textContent = `Welcome, ${name}!` || `Welcome, User!`;
+        }
+        // Check if user name is stored in local storage
+        window.onload = function() {
+            const userFullName = localStorage.getItem('userFullName');
+            if (userFullName) {
+                showWelcomeMessage(userFullName);
+            }
+        };
+
+        // Function to sign out
+        function signOut() {
+            firebase.auth().signOut().then(function() {
+                // Sign-out successful.
+                localStorage.removeItem('userFullName'); // Remove user full name from local storage
+                window.location.href = "index.html"; // Redirect to index.html or any other page after sign out
+            }).catch(function(error) {
+                // An error happened.
+                console.error('Sign Out Error', error);
+            });
+        }
+    </script>
 </body>
 </html>
+
+

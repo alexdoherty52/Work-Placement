@@ -4,54 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simon Game</title>
-  <link rel="stylesheet" href="style.css" >
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <div id="bigcircle">
-  <div id = "smallcircle"></div>
-  <div id="tleft"></div>
-  <div id="tright"></div>
-  <div id="bleft"></div>
-  <div id = "bright"></div>
-  
-  <div id = "title" style="color:#FFFFFF">Simon</div>
-  
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a class="navbar-logo" href="index.html">GamesPortal</a>
+            <li id="welcome-message"></li>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html">Home</a></li>
+                <li class="navbar-item"><a href="about.html">About</a></li>
+                <li class="navbar-item"><a href="authentication.html">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <div class="button-container">
-    <div class="game-container">
-      <button id="start">Start</button>
-      <div id="counter-container">
-        <label for="on" style="color: white;">on check to turn on</label>
-        <div id="on-off"></div>
-        <div id="counter"></div>
-        <label class="switch">
-          <input type="checkbox" id="on">
-          <span class="slider round"></span>
-        </label>
-       
-       
-      </div>
-    </div>
+    <main>
+        <div id="bigcircle">
+            <div id="smallcircle"></div>
+            <div id="tleft"></div>
+            <div id="tright"></div>
+            <div id="bleft"></div>
+            <div id="bright"></div>
+            
+            <div id="title" style="color:#FFFFFF">Simon</div>
+            
+            <div class="button-container">
+                <div class="game-container">
+                    <button id="start">Start</button>
+                    <div id="counter-container">
+                        <label for="on" style="color: white;">turn on</label>
+                        <div id="on-off"></div>
+                        <div id="counter"></div>
+                        <label class="switch">
+                            <input type="checkbox" id="on">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div id="personal-high-score-container">
+                    <div id="personal-high-score-label">Alex Doherty Simon Game</div>
+                    <div id="personal-high-score"></div>
+                </div>
+                
+                <div class="num1">
+                    <span>on-off </span>
+                </div>
+                <div id="next"></div>
+                <div class="num2"></div>
+            </div>
+        </div>
+    </main>
 
-    <div id="personal-high-score-container">
-      <div id="personal-high-score-label">Alex Doherty Simon Game</div>
-      <div id="personal-high-score"></div>
-    </div>
+    <footer>
+        <p>2024 Games Portal, Maynooth Team 6 Project</p>
+    </footer>
     
-  <div class="num1">
-        <span>on-off </span>
-      </div>
-      <div id="next"></div>
-      <div class="num2">
-        
-      </div>
-    </div>
-  </div>
-</div>
-<script src="code.js"></script>
-      
+    <script src="code.js"></script>
 </body>
 </html>
